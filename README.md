@@ -23,5 +23,5 @@ This abstraction will also allow you to change the type of storage easily withou
 The console will be a tool to validate this storage engine
 
 <p align="center">
-<a target="_blank" href="https://www.github.com/"><img src="https://github.com/josephynaina/AirBnB_clone/images/blob/master/images/image.png?raw=true"></a>
+<a target="_blank" href="https://www.github.com/josephynaina/AirBnB_clone/"><img src="https://github.com/josephynaina/AirBnB_clone/blob/master/images/image.png?raw=true"></a>
 </p>
