@@ -7,6 +7,7 @@ that define common attributes/methods for other classes
 import sys
 import uuid
 import datetime
+import models
 
 
 class BaseModel:
@@ -14,19 +15,27 @@ class BaseModel:
     defines common attr/methods for the other classes
     """
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         """
         instatiation of the BaseModel class
         """
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.datetime.now()
-        self.updated_at = datetime.datetime.now()
+        if len(kwargs) != 0:
+            self.id = kwargs['id']
+            self.created_at = datetime.datetime.strptime(kwargs['created_at'], '%Y-%m-%dT%H:%M:%S.%f')
+            self.updated_at = datetime.datetime.strptime(kwargs['updated_at'], '%Y-%m-%dT%H:%M:%S.%f')
+
+        else:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.datetime.now()
+            self.updated_at = datetime.datetime.now()
+            models.storage.new(self)
 
     def save(self):
         """
         update the attr updated at
         """
         self.updated_at = datetime.datetime.now()
+        models.storage.save()
 
     def __str__(self):
         """
